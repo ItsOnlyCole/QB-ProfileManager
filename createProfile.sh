@@ -2,13 +2,12 @@
 
 profileName=$1 #String
 copyConfig=$2 #Boolean
-configDir=~/.config/qutebrowser-
-baseQuteBrowserDir=~/.config/qutebrowser
+configDir=/home/itsonlycole/.config/qutebrowser-
+baseQuteBrowserDir=/home/itsonlycole/.config/qutebrowser
 
 mkdir $configDir$profileName
-exec python3 createShortcut.py $profileName
 
-if [ !$copyConfig ]
+if [ -z "$copyConfig" ]
 then
     copyConfig="False"
 fi
@@ -21,5 +20,6 @@ then
     mkdir $configDir$profileName/config
     cp $baseQuteBrowserDir/config.py $configDir$profileName/config/config.py
 fi
-    
-#Call Python Script to Add Profile to profiles.xml/json
+
+exec python3 createShortcut.py $profileName &
+exec python3 addProfileToXML.py $profileName &
