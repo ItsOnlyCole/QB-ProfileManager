@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>275</height>
+    <width>609</width>
+    <height>242</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <widget class="QListWidget" name="profilesListWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="addProfileButton">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -37,7 +37,7 @@
      <string>Add Profile</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="removeProfileButton">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -50,7 +50,7 @@
      <string>Remove Profile</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="updateConfigButton">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -64,17 +64,6 @@
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>600</width>
-     <height>28</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
