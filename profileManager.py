@@ -1,8 +1,8 @@
 #Attaching the ui to python code using this tutorial https://nitratine.net/blog/post/how-to-import-a-pyqt5-ui-file-in-a-python-gui/
 import sys
+from os.path import expanduser, exists
+from os import mkdir
 from PyQt5 import QtWidgets, uic
-
-profilesFile = "/home/itsonlycole/.config/QB-ProfileManager/profiles.xml"
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
@@ -10,6 +10,27 @@ class Ui(QtWidgets.QMainWindow):
         uic.loadUi('mainUI.ui', self) #Loads the .ui file
         self.profilesList = self.findChild(QtWidgets.QListWidget, 'profilesListWidget')
         self.show() #Shows the gui
+
+def generateProfilesXML(file):
+    xml = open(file, "w")
+    xmlMessage = ""
+    xmlMessage.append("<profiles>\n")
+    xmlMessage.append("  <profile>Default</profile>\n")
+    xmlMessage.append("</profiles>")
+    xml.writelines(xmlMessage)
+    xml.close()
+
+def defineProfilesLocation():
+    user = expanduser('~')
+    dir = user + "/.config/QB-ProfileManager"
+    file = user + "/.config/QB-ProfileManager/profiles.xml"
+    if exists(dir)=="false":
+        mkdir(dir)
+        print("QB-ProfileManager Folder made")
+    if exists(file)=="false":
+        generateProfilesXML(file)
+        print("profiles.xml made")
+    return file
 
 def createProfilesList(file):
     profilesXML = open(file, "r")
@@ -25,6 +46,7 @@ def createProfilesList(file):
 
 app = QtWidgets.QApplication(sys.argv) #Creates an instance of QtWidgets.QApplication
 window = Ui() #Creates an instance of our class
+profilesFile=defineProfilesLocation()
 profiles = createProfilesList(profilesFile)
 window.profilesList.clear()
 for profile in profiles:
