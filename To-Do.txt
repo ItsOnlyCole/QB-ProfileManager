@@ -1,0 +1,27 @@
+;; This buffer is for text that is not saved, and for Lisp evaluation.
+;; To create a file, visit it with C-x C-f and enter text in its buffer.
+
+4/5 mini-programs
+---Create Profile Script---(SHELL)
+X*Make a dir for the profile
+*Make a shortcut for the profile
+X*Copy the main config file over
+*Add Profile name to an XML/JSON doc.
+
+---Remove Profile Script---(SHELL)
+X*Remove profile dir
+X*Remove shortcut
+*Remove Profile Name from XML/JSON doc
+
+---Update Config Script---(SHELL)
+*For Each Profile
+****Copy Main Config Over.
+
+---XML/JSON Writer---(Python)
+*Take an input and write to XML/JSON
+*Take an Input and remove from XML/JSON
+
+---Shortcut Creator---(Python)
+*Write profile name into Exec line of shortcut file.
+
+---GUI---(Python w/ QT)
